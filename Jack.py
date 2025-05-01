@@ -2,6 +2,8 @@ import pyttsx3
 import datetime
 import speech_recognition as sr  
 import wikipedia
+import webbrowser
+import os
 
 engine =  pyttsx3.init('sapi5')
 
@@ -17,9 +19,9 @@ def speak(audio):
 def WishMe():
     hour =  int(datetime.datetime.now().hour)
     if hour >= 0 and hour <12:
-        speak("Good Morning")
+        speak("Good Morning  ")
     elif hour >= 12 and hour <18:
-        speak("Good Afternoon")
+        speak("Good Afternoon  AAman Chuuttiyee")
     else:
         speak("Good Evening!")
 
@@ -45,7 +47,8 @@ def takecommand():
 
 if __name__ == "__main__":
     WishMe()
-    while True:
+    # while True:
+    if 1:
         query = takecommand().lower()
     #logic for executing task based on query
         if 'wikipedia' in query:
@@ -55,6 +58,34 @@ if __name__ == "__main__":
             speak("According to Wikipedia")
             print(results)
             speak(results)
+        elif 'open youtube' in query:
+            webbrowser.open("youtube.com")
+        elif 'open google' in query:
+            webbrowser.open("google.com")
+        elif 'open hackerrank' in query:
+            webbrowser.open("hackerrank.com")
+
+        elif 'play music' in query:
+            music_dir = 'D: \\Non critical\\songs\\favorite songs2'
+            songs = os.listdir(music_dir)
+            print(songs)
+            os.startfile(os.path.join(music_dir, songs[0]))
+
+        elif 'the time' in query:
+            strTime = datetime.datetime.now().strftime("%h:%M:%S")
+            speak(f"sir, the time is {strTime}")
+        elif 'open code' in query:
+            codepath = "C:\\Users\\abhis\\AppData\\Local\\Programs\\Microsoft\\ VS Code\\Code.exe"
+            os.startfile(codepath)
+        elif 'if quit ' in query:
+            exit
+
+            
+
+
+
+
+        
 
 
 
